@@ -1,3 +1,5 @@
+class labproject::labprog {
+
 package { 'httpd':
 	ensure => present
 }
@@ -19,4 +21,7 @@ user { 'nokia-build':
 file { '/var/www/html/index.html':
         ensure => present,
         content => "<h1> Hello. Visit my <a href=\"http://www.mohanrajan.com\">site</a></h1>"
+}
+
+
 }
