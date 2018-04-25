@@ -1,0 +1,188 @@
+What is Docker?
+Why Docker?
+
+What is Major Componnent
+	Docker Engine
+	Docker Images
+	Repo
+		https://hub.docker.com/
+		https://store.docker.com/
+		Nexus
+		Artifactory
+	Containers
+
+Release in Docker?
+	docker - OS - Free
+	docker-engine - FREE
+	docker-commuity dc - Free 
+	docker enterprise - PAID - 12 Hours Demo - https://www.docker.com/enterprise-edition
+How to install Docker Engine
+	http://www.devopsschool.com/tutorial/docker/docker-install-and-configuration.html
+	52.66.41.156
+
+First Command
+> docker info
+> docker help
+Basic Work Flow
+================================================
+APPlication - JENKINS
+
+Image - jenkins from
+
+How to download images?
+> docker pull jenkins [ From https://hub.docker.com]
+
+What is Container?
+	Running State of the images is called container
+	One images - can be run into 10000000XXXXX containers
+
+How to see list of images?
+> docker images
+
+How to see the logs of the conainer process?
+> docker logs cont-id
+
+How to get a containers?
+> docker run jenkins
+> docker run -p 8080:8080 -p 50000:50000 jenkins
+> docker run -d -p 8080:8080 -p 50000:50000 jenkins
+> docker run -d -p 8081:8080 -p 50001:50000 jenkins
+> docker run -d -p 8082:8080 -p 50002:50000 jenkins
+> docker run --name scmgalaxy2 -d -p 8083:8080 -p 50003:50000 jenkins
+
+docker run - Which will create new cont
+-p = port forwarding
+8080:8080 - external:internal
+
+How to see the running containers?
+> docker ps 
+
+How to see all cont including exited/created?
+> docker ps -a
+
+How to get inside a container?
+> docker exec 42d6e2564621 ls
+> docker exec 42d6e2564621 ps
+> docker exec 42d6e2564621 git
+> docker exec -it bb09dee67e5f /bin/bash
+
+How to come out of the container without exiting?
+ctrl+p+q
+
+How to remove unwanted containers?
+> docker rm cont_id
+
+How to stop the runnng container?
+> docker stop cont-id
+
+How to start the stopped containers?
+> docker start cont-id
+
+How to rename container?
+> docker rename cont-id new-name
+
+How to see the number of process in containers?
+> docker top cont-id
+
+Which process is holding thecontainer?
+> docker ps 
+
+How to describe the container?
+> docker inspect cont-id
+
+How to describe the images?
+> docker inspect image-name
+
+How to delete imahes?
+> docker rmi image-name
+
+EACH Contaiers must have at least of one process running and holding...
+=======================================================================
+
+EXEC VS ATTACH
+
+LAB 
+========================
+Write a docker command to create a directory call "src" inside /opt of ubunutu container
+
+How to copy fiels/dir between containers?
+> docker cp nokia.txt 4ae24e26dfd7:/opt
+> docker exec 4ae24e26dfd7 ls /opt
+> docker cp 4ae24e26dfd7:/opt/nokia.txt .
+
+How to check the containers cpu and ram utli?
+> docker stats
+
+
+==============================================
+
+MANAGING THE CONTAINERS?
+attach      Attach local standard input, output, and error streams to a running container
+exec        Run a command in a running container
+images      List images
+info        Display system-wide information
+ps          List containers
+pull        Pull an image or a repository from a registry
+run         Run a command in a new container
+rm          Remove one or more containers  =====
+rename      Rename a container
+stop        Stop one or more running containers
+top         Display the running processes of a container
+start       Start one or more stopped containers
+cp          Copy files/folders between a container and the local filesystem
+logs        Fetch the logs of a container
+inspect     Return low-level information on Docker objects
+rmi         Remove one or more images
+stats       Display a live stream of container(s) resource usage statistics
+
+
+How to create Images
+===================================================
+Method 1
+	Using containers
+>  docker commit -a"Rajesh Kumar" -m"This is my UB-UP-GIT" 07fb2ee80ee5 scmgalaxy/dsfsfsd
+
+Method 2
+	Dockerfile
+https://github.com/jenkinsci/docker/blob/587b2856cd225bb152c4abeeaaa24934c75aa460/Dockerfile
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar <rajesh@scmgalaxy.com>
+RUN apt-get update && apt-get install git -y
+
+> docker build -t scmgalaxy/dffdd .
+
+
+HOW TO SHARE?????
+	LOCAL WAY
+	PUBLIC REPO WAY
+	PRIVATE REPO WAY
+
+
+LAB 2 - http://www.devopsschool.com/tutorial/docker/labs/docker-lab-6.html
+
+
+history     Show the history of an image
+build       Build an image from a Dockerfile
+commit      Create a new image from a container's changes
+create      Create a new container
+diff        Inspect changes to files or directories on a container's filesystem
+events      Get real time events from the server
+export      Export a container's filesystem as a tar archive
+import      Import the contents from a tarball to create a filesystem image
+kill        Kill one or more running containers
+load        Load an image from a tar archive or STDIN
+login       Log in to a Docker registry
+logout      Log out from a Docker registry
+pause       Pause all processes within one or more containers
+port        List port mappings or a specific mapping for the container
+push        Push an image or a repository to a registry
+restart     Restart one or more containers
+save        Save one or more images to a tar archive (streamed to STDOUT by default)
+search      Search the Docker Hub for images
+tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+unpause     Unpause all processes within one or more containers
+update      Update configuration of one or more containers
+version     Show the Docker version information
+wait        Block until one or more containers stop, then print their exit codes
+
